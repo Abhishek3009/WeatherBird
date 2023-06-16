@@ -91,9 +91,4 @@ typings/
 # Electron-Forge
 out/
 
-src/index.css
-src/index.js
-src/preload.js
-src/weather.js
-scripts/
 images/
