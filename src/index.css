@@ -7,7 +7,7 @@ body {
   background: skyblue;
 }
 
-#cityWeather {
+#weatherGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 150px);
   padding: 24px;

@@ -33,7 +33,7 @@ if(cityNotFound == False):
 }
 else:
     displayDat = {
-        'message':'City Not Found !'
+        'City'       :'error'
     }
 
 scriptOut = json.dumps(displayDat)

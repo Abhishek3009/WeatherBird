@@ -19,8 +19,8 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    maximizable: true,
-    resizable: true,
+    maximizable: false,
+    resizable: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration:true,
@@ -34,7 +34,7 @@ const createWindow = async () => {
 
   // Open the DevTools.
   const wc = mainWindow.webContents;
-  wc.openDevTools();
+  // wc.openDevTools();
 };
 
 app.whenReady().then(()=>{

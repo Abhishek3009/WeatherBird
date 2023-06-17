@@ -1,4 +1,6 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer} = require('electron');
+const alert = require('alert');
+
 let cityList = new Array();
 
 let getWeatherData = (cityName) => {
@@ -10,12 +12,18 @@ let addWeatherTile = () =>{
     ipcRenderer.on('weatherData',(event,message)=>{
         console.log(message)
         const weatherData = JSON.parse(message)
-        const dataBlock = createDataBlock(weatherData);
-        if(typeof dataBlock === "undefined"){
-            console.log("City is already added")
+        if(weatherData.City === 'error'){
+            console.log('City does not exist')
+            alert("City does not exist! Please retry")
         }
         else{
-            weatherGrid.appendChild(dataBlock);
+            const dataBlock = createDataBlock(weatherData);
+            if(typeof dataBlock === "undefined"){
+                console.log("City is already added")
+            }
+            else{
+                weatherGrid.appendChild(dataBlock);
+            }
         }
     })
 } 
@@ -36,7 +44,7 @@ function createDataBlock(weatherData) {
         cityList.push(weatherData.City)
 
         const dataBlock = document.createElement('div');
-        dataBlock.className = 'weather-block';
+        dataBlock.className = 'weather-tile';
       
         const cityName = document.createElement('h2');
         cityName.textContent = weatherData.City;
