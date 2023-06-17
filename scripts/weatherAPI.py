@@ -24,8 +24,9 @@ if(cityNotFound == False):
     longitude = data['coord']['lon']
     description = data['weather'][0]['description']
     displayDat = {
+        'City'       :city,
         'Temperature':temp,
-        'Wind Speed' :wind_speed,
+        'WindSpeed' :wind_speed,
         'Latitude'   :latitude,
         'Longitude'  :longitude,
         'Description':description,

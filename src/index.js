@@ -19,6 +19,8 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    maximizable: true,
+    resizable: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration:true,
@@ -32,7 +34,7 @@ const createWindow = async () => {
 
   // Open the DevTools.
   const wc = mainWindow.webContents;
-  // wc.openDevTools();
+  wc.openDevTools();
 };
 
 app.whenReady().then(()=>{
@@ -53,12 +55,11 @@ app.on('activate', () => {
 
 ////////////////////////////////////////////////// IPC to run python script ////////////////////////////////////////////////////////////////
 
-ipcMain.on("gotCityName", (event, lead)=>{
+ipcMain.on("getWeatherData", (event, city)=>{
   let pyshell = new PythonShell(path.join(__dirname, '../scripts/weatherAPI.py'));
-  pyshell.send(JSON.stringify([lead]))
-  pyshell.on('message', function(message) {
-    weatherDat = JSON.parse(message)
-    console.log(weatherDat)
+  pyshell.send(JSON.stringify([city]))
+  let weatherData = pyshell.on('message', function(message) {
+    mainWindow.webContents.send('weatherData',message)
   })
   pyshell.end(function (err) {
     if (err){
