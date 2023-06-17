@@ -5,7 +5,7 @@ citydata = sys.stdin.readlines()
 city = json.loads(citydata[0])
 city = city[0]
 
-url = 'http://api.openweathermap.org/data/2.5/weather?q={}&appid=2048faacea21253f80c35295fdbcb088&units=metric'.format(city)
+url = 'http://api.openweathermap.org/data/2.5/weather?q={}&appid=YOUR_API_KEY&units=metric'.format(city)
 res = requests.get(url)
 
 data = res.json()
