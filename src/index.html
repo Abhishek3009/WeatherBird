@@ -9,18 +9,23 @@
   </head>
 
   <body>
-    <br>
     <div class="container">
-      <div class="jumbotron">
-        <h1>Weather Forecast</h1>
-        <h2>Powered by Python</h2>
-        <p>Rendered by HTML and JavaScript</p>
+      <div id="app-title">
+        <img src="file://D:\My Projects\weather-bird\images\weather-bird-icon.png">
+        <h1>Weather Bird</h1>
       </div>
-      <br>
-      <label>Enter your city here</label>
-      <input id="cityInput" type="text" placeholder="City"/>
-      <button id="reqWeatherButton">Go!</button>
+      
+      <h3 id="subtitle">Know the weather!</h3>
+
+      <div id="search-bar">
+        <input id="cityInput" type="text" placeholder="City Name"/>
+        <button id="reqWeatherButton">
+          <img src="file://D:\My Projects\weather-bird\images\location-icon.png">Go!
+        </button>
+      </div>
+      
+      <div id="weatherGrid">
+      </div>
     </div>
-    <div id="weatherGrid"></div>
   </body>
 </html>

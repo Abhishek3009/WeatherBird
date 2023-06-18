@@ -2,6 +2,8 @@ const reqWeatherButton = document.getElementById('reqWeatherButton')
 const cityInput = document.getElementById('cityInput');
 const weatherGrid = document.getElementById('weatherGrid');
 
+var prevTile;
+
 reqWeatherButton.addEventListener("click", (event,arg)=>{
     let city = cityInput.value;
     var weatherData;

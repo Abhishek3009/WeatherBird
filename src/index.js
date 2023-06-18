@@ -18,7 +18,7 @@ const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 529,
     maximizable: false,
     resizable: false,
     webPreferences: {
